@@ -1,3 +1,11 @@
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize("mysql://root:NEW_USER_PASSWORD@localhost:3301/tutorial");
+export const db = new Sequelize(
+  'tutorial',
+  'root',
+  'NEW_USER_PASSWORD',
+  {
+      dialect:'mysql',
+      port:3001
+  }
+);

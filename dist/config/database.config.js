@@ -1,5 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sequelize = void 0;
+exports.db = void 0;
 var sequelize_1 = require("sequelize");
-exports.sequelize = new sequelize_1.Sequelize("mysql://root:NEW_USER_PASSWORD@localhost:3301/tutorial");
+exports.db = new sequelize_1.Sequelize('tutorial', 'root', 'NEW_USER_PASSWORD', {
+    dialect: 'mysql',
+    port: 3001
+});
