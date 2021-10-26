@@ -23,7 +23,7 @@ router.get("/fetch", async (req: Request, res: Response): Promise<any> => {
   }
 });
 
-router.get("/update/:id", async (req: Request, res: Response): Promise<any> => {
+router.patch("/update/:id", async (req: Request, res: Response): Promise<any> => {
   try {
       const id:number = Number (req.params.id)
     const result = await Todo.update(req.body,{where:{id}});
@@ -34,11 +34,12 @@ router.get("/update/:id", async (req: Request, res: Response): Promise<any> => {
   }
 });
 
-router.get("/delete/:id", async (req: Request, res: Response): Promise<any> => {
+router.delete("/delete/:id", async (req: Request, res: Response): Promise<any> => {
   try {
     const id:number = Number (req.params.id)
     const result = await Todo.destroy({where:{id}})
-    res.status(200).send(result);
+    console.log(result);
+    res.sendStatus(200).send(result);
   } catch (err) {
     console.log(err);
     res.status(400).send(err);

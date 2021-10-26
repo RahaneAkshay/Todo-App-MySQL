@@ -25,7 +25,7 @@ exports.router.get("/fetch", async (req, res) => {
         res.status(400).send(err);
     }
 });
-exports.router.get("/update/:id", async (req, res) => {
+exports.router.patch("/update/:id", async (req, res) => {
     try {
         const id = Number(req.params.id);
         const result = await todo_model_1.Todo.update(req.body, { where: { id } });
@@ -36,11 +36,12 @@ exports.router.get("/update/:id", async (req, res) => {
         res.status(400).send(err);
     }
 });
-exports.router.get("/delete/:id", async (req, res) => {
+exports.router.delete("/delete/:id", async (req, res) => {
     try {
         const id = Number(req.params.id);
         const result = await todo_model_1.Todo.destroy({ where: { id } });
-        res.status(200).send(result);
+        console.log(result);
+        res.sendStatus(200).send(result);
     }
     catch (err) {
         console.log(err);
