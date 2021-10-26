@@ -2,19 +2,22 @@ import { Model,  DataTypes } from "sequelize";
 import { db } from "../config/database.config";
 
 interface TodoAttributes {
-  id: string;
+  id: number;
   title: string;
   completed: boolean;
+  
 }
 
 export class Todo extends Model<TodoAttributes> {}
 
 Todo.init({
     id:{
-        type:DataTypes.STRING,
+        type:DataTypes.INTEGER,
         primaryKey:true,
-        allowNull:false
+        allowNull:false,
+        autoIncrement:true
     },
+
     title:{
         type:DataTypes.STRING,
         allowNull:false
@@ -25,5 +28,6 @@ Todo.init({
     }
 },{
       sequelize:db,
-      tableName:'todos'
+      tableName:'todos',
+      timestamps:false
 })
